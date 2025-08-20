@@ -705,17 +705,106 @@
     <script src="./assets/js/faq.js"></script>
     <script src="./assets/js/animation.js"></script>
     <script src="snow.js"></script>
-<iframe 
-  width="0" 
-  height="0" 
-  src="https://www.youtube.com/embed/C5CYINWf0Ik?autoplay=1&loop=1&playlist=C5CYINWf0Ik" 
-  frameborder="0" 
-  allow="autoplay">
-</iframe>
+<style>
+  body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 80px;
+  }
 
+  #playMusicBtn {
+    padding: 15px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00ffcc, #ff00ff);
+    color: white;
+    text-shadow: 0 0 10px #00ffcc;
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff;
+    transition: all 0.3s ease;
+  }
+
+  #playMusicBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff;
+  }
+
+  #playMusicBtn:disabled {
+    background: #222;
+    color: #888;
+    box-shadow: none;
+    cursor: default;
+    transform: none;
+  }
+</style>
+<div>
+  <button id="playMusicBtn">🎵 Tocar Música</button>
+</div>
+
+<div id="player"></div>
+
+<script>
+  // Carregar API do YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'C5CYINWf0Ik', // ID do vídeo
+      playerVars: {
+        'autoplay': 1,
+        'mute': 0,
+        'loop': 1,
+        'playlist': 'C5CYINWf0Ik'
+      },
+      events: {
+        'onReady': tryAutoplay
+      }
+    });
+  }
+
+  function tryAutoplay(event) {
+    // tenta autoplay
+    let playPromise = event.target.playVideo();
+
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        // autoplay funcionou
+        disableButton();
+      }).catch(() => {
+        // autoplay bloqueado -> mostra botão
+        document.getElementById("playMusicBtn").style.display = "inline-block";
+      });
+    }
+  }
+
+  // Botão backup
+  document.getElementById("playMusicBtn").addEventListener("click", function () {
+    if (player && player.playVideo) {
+      player.playVideo();
+      disableButton();
+    }
+  });
+
+  function disableButton() {
+    let btn = document.getElementById("playMusicBtn");
+    btn.innerText = "🎶 Música Tocando...";
+    btn.disabled = true;
+  }
+</script>
 </body>
 
 
 </html>
+
 
 
