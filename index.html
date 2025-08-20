@@ -27,6 +27,104 @@
     <link rel="stylesheet" href="./assets/css/footer.css">
 
 </head>
+<style>
+  body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  #playMusicBtn {
+    padding: 15px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00ffcc, #ff00ff);
+    color: white;
+    text-shadow: 0 0 10px #00ffcc;
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+  }
+
+  #playMusicBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff;
+  }
+
+  #playMusicBtn:disabled {
+    background: #222;
+    color: #888;
+    box-shadow: none;
+    cursor: default;
+    transform: none;
+  }
+</style>
+
+<div>
+  <button id="playMusicBtn">🔊 Ativar Som</button>
+</div>
+
+<div id="player"></div>
+
+<script>
+  // Carregar API do YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  var somAtivado = false;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'C5CYINWf0Ik',
+      playerVars: {
+        'autoplay': 1,
+        'mute': 1,   // começa mudo
+        'loop': 1,
+        'playlist': 'C5CYINWf0Ik'
+      },
+      events: {
+        'onReady': tryAutoplay
+      }
+    });
+  }
+
+  function tryAutoplay(event) {
+    event.target.playVideo();
+    event.target.seekTo(30, true); // começa a partir de 30s
+  }
+
+  // Função que ativa o som
+  function ativarSom() {
+    if (player && player.unMute && !somAtivado) {
+      player.unMute();
+      player.playVideo();
+      player.seekTo(30, true); // garante que ative no ponto certo
+      somAtivado = true;
+      disableButton();
+    }
+  }
+
+  // Clique no botão ativa som
+  document.getElementById("playMusicBtn").addEventListener("click", ativarSom);
+
+  // Clique em qualquer lugar da página também ativa som
+  document.body.addEventListener("click", ativarSom);
+
+  function disableButton() {
+    let btn = document.getElementById("playMusicBtn");
+    btn.innerText = "🎶 Música Tocando...";
+    btn.disabled = true;
+  }
+</script>
 
 <body>
 
@@ -94,7 +192,7 @@
 
                 <h1 class="header__title">
                     Magrin
-                    <span>Cheats o 00 da INTERNET</span>
+                    <span>Cheats o #1🏆</span>
 
                 </h1>
 
@@ -156,9 +254,9 @@
                         <div class="shop__card">
                             <!-- Logo and title -->
                             <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68" alt="Shop Logo">
-                            <h2 class="shop__card__title">MAGRIN EXTERNAL [FIVEM]</h2>
+                            <h2 class="shop__card__title">MAGRIN EXTERNAL LIFETIME [FIVEM]</h2>
                             <p class="shop__card__description">Melhor Cheat Undetected para FiveM PvP – Seguro e Confiável</p>
-                            <p class="shop__card__price">Por apenas <span>R$150</span></p>
+                            <p class="shop__card__price">Por apenas:<span>R$150,00</span></p>
 
                             <!-- Purchase Button WhatsApp -->
 <button type="button" class="shop__card__purchase" 
@@ -178,24 +276,23 @@
                     <div class="col-lg-4">
                         <div class="shop__card">
                             <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68">
-                            <h2 class="shop__card__title">FIVEM-READY [ACCOUNT]</h2>
+                            <h2 class="shop__card__title">CONTA ROCKSTAR [ACCOUNT]</h2>
                             <p class="shop__card__description">FULL ACCESS & FRESH ACC</p>
-                            <p class="shop__card__price">Starting at <span>1.00$</span></p>
+                            <p class="shop__card__price">Por apenas:<span>R$20,00</span></p>
 
                             <!-- Purchase Button -->
-                            <button type="submit" class="shop__card__purchase" onclick="window.sellAuthEmbed.openProductModal({
-                domain: 'z7z.mysellauth.com',
-                product: 'fresh-fivem-ready-account'
-            })">
-            <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
-                <g id="shopping-bag" transform="translate(1 1)">
-                    <path id="Path_3" data-name="Path 3" d="M5.194,2,3,4.925V15.161a1.462,1.462,0,0,0,1.462,1.462H14.7a1.462,1.462,0,0,0,1.462-1.462V4.925L13.968,2Z" transform="translate(-2.575 -2)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                    <line id="Line_2" data-name="Line 2" x2="13.586" transform="translate(0 2.736)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                    <path id="Path_4" data-name="Path 4" d="M13.849,10A2.925,2.925,0,0,1,8,10" transform="translate(-3.92 -4.151)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                </g>
-            </svg>
-            Purchase
-        </button>
+                            <!-- Purchase Button WhatsApp -->
+<button type="button" class="shop__card__purchase" 
+    onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20comprar%20uma%20conta%20Rockstar', '_blank')">
+    <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
+        <g id="shopping-bag" transform="translate(1 1)">
+            <path id="Path_3" data-name="Path 3" d="M5.194,2,3,4.925V15.161a1.462,1.462,0,0,0,1.462,1.462H14.7a1.462,1.462,0,0,0,1.462-1.462V4.925L13.968,2Z" transform="translate(-2.575 -2)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <line id="Line_2" data-name="Line 2" x2="13.586" transform="translate(0 2.736)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <path id="Path_4" data-name="Path 4" d="M13.849,10A2.925,2.925,0,0,1,8,10" transform="translate(-3.92 -4.151)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+    </svg>
+    Comprar
+</button>
                         </div>
                     </div>
 
@@ -224,8 +321,8 @@
                         <div class="shop__card">
                             <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68">
                             <h2 class="shop__card__title">PROJECT Magrin [SPOOFER]</h2>
-                            <p class="shop__card__description">BEST FIVEM & FORTNITE SPOOFER</p>
-                            <p class="shop__card__price">Starting at <span>14.99$</span></p>
+                            <p class="shop__card__description">O MELHOR SPOOFER PARA FIVEM,VALORANT,FORTNITE E LOL</p>
+                            <p class="shop__card__price">Por apenas:<span>R$190,00</span></p>
                             <div data-sellix-product="6667133862647f8" type="submit" alt="Buy Now with sellix.io" class="shop__card__purchase">
                                 <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
                             <g id="shopping-bag" transform="translate(1 1)">
@@ -250,9 +347,9 @@
                     <div class="col-lg-4">
                         <div class="shop__card">
                             <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68">
-                            <h2 class="shop__card__title">Magrin FREE [FIVEM]</h2>
+                            <h2 class="shop__card__title">Magrin byPASS VALORANT & LOL [FIVEM]</h2>
                             <p class="shop__card__description">BEST FREE UNDETECTED FIVEM CHEAT!</p>
-                            <p class="shop__card__price">Starting at <span>0.00$</span></p>
+                            <p class="shop__card__price">Por apenas:<span>R$250,00</span></p>
                             <div class="shop__card__purchase" onclick="openLinkInNewTab('https://linkvertise.com/1069471/Magrin-free')">
                                 <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
                             <g id="shopping-bag" transform="translate(1 1)">
@@ -336,7 +433,7 @@
 
                     <div class="reviews__card">
 
-                        <h3 class="reviews__card__name">KH4N🐐</h3>
+                        <h3 class="reviews__card__name">PABLOXTX🐐</h3>
 
                         <div class="reviews__stars">
 
@@ -378,7 +475,7 @@
                         </div>
 
                         <p class="reviews__card__review">
-                            +rep bought a lifetime key honestly loved their ui simple and clean 0 ego reply fast best in the cord tbh
+                            +rep MELHOR SPOOFER DO MERCADO, TOMO BAN TODOS OS DIAS JOGANDO XITADO NO VALORANT E TIRO O BANS EM MINUTOS <3
                         </p>
 
                     </div>
@@ -389,7 +486,7 @@
 
                     <div class="reviews__card">
 
-                        <h3 class="reviews__card__name">floogy </h3>
+                        <h3 class="reviews__card__name">JÚLIA </h3>
 
                         <div class="reviews__stars">
 
@@ -431,7 +528,7 @@
                         </div>
 
                         <p class="reviews__card__review">
-                            +rep the mdf best spoofer i have never see, fast unban, clean design, easy spoof
+                            +rep ÚNICO TPM DE LOJINHA DE DISCORD QUE REALMENTE FUNCIONA!! 
                         </p>
 
                     </div>
@@ -531,7 +628,7 @@
                     </div>
 
                     <div class="faq__card__content" style="display: none;">
-                        To Pay with GiftCards Open a Ticket in our Discord Server. </div>
+                        Para pagar com Gift Cards, abra um ticket no seu servidor Discord. </div>
 
                 </div>
 
@@ -540,7 +637,7 @@
                     <div class="faq__card">
 
                         <div class="faq__card__text">
-                            <h2 class="faq__card__text__title">Pay with PayPal?</h2>
+                            <h2 class="faq__card__text__title">Pagar com PayPal?</h2>
                         </div>
 
                         <div class="faq__card__plus">
@@ -559,7 +656,7 @@
                     </div>
 
                     <div class="faq__card__content" style="display: none;">
-                        You can Pay on the Website and in our Discord Server with PayPal. </div>
+                        Você pode pagar no site e em nosso servidor Discord com PayPal. </div>
 
                 </div>
 
@@ -568,7 +665,7 @@
                     <div class="faq__card">
 
                         <div class="faq__card__text">
-                            <h2 class="faq__card__text__title">BAN</h2>
+                            <h2 class="faq__card__text__title">ESTÁ DETECTÁVEL?</h2>
                         </div>
 
                         <div class="faq__card__plus">
@@ -586,7 +683,7 @@
                     </div>
 
                     <div class="faq__card__content" style="display: none;">
-                        No, You can't get Banned with our Products! </div>
+                        Não, você não pode ser banido com nossos produtos! </div>
 
                 </div>
 
@@ -614,7 +711,7 @@
                     </div>
 
                     <div class="faq__card__content" style="display: none;">
-                        This Software have Stream Proof? Yes </div>
+                        Este software possui Stream Proof? Sim </div>
 
                 </div>
 
@@ -655,7 +752,7 @@
                 </ul>
                 <div class="footer__copyright">
                     </ul>
-                    Made with ❤ by <strong>Magrin</strong> & <strong>Daniel</strong>.
+                    Made with ❤ by <strong>Magrin</strong> ❤ <strong>XD</strong>.
                     </ul>
                 </div>
 
@@ -705,106 +802,12 @@
     <script src="./assets/js/faq.js"></script>
     <script src="./assets/js/animation.js"></script>
     <script src="snow.js"></script>
-<style>
-  body {
-    background: #0f0f0f;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 80px;
-  }
 
-  #playMusicBtn {
-    padding: 15px 40px;
-    font-size: 20px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #00ffcc, #ff00ff);
-    color: white;
-    text-shadow: 0 0 10px #00ffcc;
-    box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff;
-    transition: all 0.3s ease;
-  }
-
-  #playMusicBtn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff;
-  }
-
-  #playMusicBtn:disabled {
-    background: #222;
-    color: #888;
-    box-shadow: none;
-    cursor: default;
-    transform: none;
-  }
-</style>
-<div>
-  <button id="playMusicBtn">🎵 Tocar Música</button>
-</div>
-
-<div id="player"></div>
-
-<script>
-  // Carregar API do YouTube
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  var player;
-
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '0',
-      width: '0',
-      videoId: 'C5CYINWf0Ik', // ID do vídeo
-      playerVars: {
-        'autoplay': 1,
-        'mute': 0,
-        'loop': 1,
-        'playlist': 'C5CYINWf0Ik'
-      },
-      events: {
-        'onReady': tryAutoplay
-      }
-    });
-  }
-
-  function tryAutoplay(event) {
-    // tenta autoplay
-    let playPromise = event.target.playVideo();
-
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        // autoplay funcionou
-        disableButton();
-      }).catch(() => {
-        // autoplay bloqueado -> mostra botão
-        document.getElementById("playMusicBtn").style.display = "inline-block";
-      });
-    }
-  }
-
-  // Botão backup
-  document.getElementById("playMusicBtn").addEventListener("click", function () {
-    if (player && player.playVideo) {
-      player.playVideo();
-      disableButton();
-    }
-  });
-
-  function disableButton() {
-    let btn = document.getElementById("playMusicBtn");
-    btn.innerText = "🎶 Música Tocando...";
-    btn.disabled = true;
-  }
-</script>
 </body>
 
 
 </html>
+
 
 
 
