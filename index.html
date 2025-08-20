@@ -99,7 +99,7 @@
 
   function tryAutoplay(event) {
     event.target.playVideo();
-    event.target.seekTo(30, true); // começa a partir de 30s
+    event.target.seekTo(46, true); // começa a partir de 30s
   }
 
   // Função que ativa o som
@@ -107,7 +107,7 @@
     if (player && player.unMute && !somAtivado) {
       player.unMute();
       player.playVideo();
-      player.seekTo(30, true); // garante que ative no ponto certo
+      player.seekTo(46, true); // garante que ative no ponto certo
       somAtivado = true;
       disableButton();
     }
@@ -829,6 +829,7 @@ Legenda: “🎮 Compatível com a versão atual do jogo” </div>
 
 
 </html>
+
 
 
 
