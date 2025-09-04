@@ -11,7 +11,6 @@
     <meta name="theme-color" content="#7B86FF">
     <meta property="og:image" content="./assets/img/logo.png">
     <meta property="og:url" content="">
-
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/colors.css">
     <link rel="stylesheet" href="./assets/css/general.css">
@@ -60,9 +59,9 @@
             transform: none;
         }
 
-        /* Cards da loja */
+        /* Cards da loja - aumentar 40% */
         .shop__icon {
-            width: 350px; /* Aumentado 40% */
+            width: 350px; /* 250px * 1.4 = 350px */
             height: auto;
             cursor: pointer;
             border-radius: 10px;
@@ -89,7 +88,7 @@
         }
 
         .lightbox-content {
-            max-width: 112%;
+            max-width: 112%; /* 80% + 40% */
             max-height: 112%;
             margin-top: 5%;
             border-radius: 12px;
@@ -112,78 +111,105 @@
         }
     </style>
 </head>
-
 <body>
-<div>
-    <button id="playMusicBtn">🔊 Ativar Som</button>
-</div>
 
-<div id="player"></div>
+    <!-- Botão de música -->
+    <div>
+        <button id="playMusicBtn">🔊 Ativar Som</button>
+    </div>
+    <div id="player"></div>
 
-<script>
-    // YouTube API
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    <!-- Navbar, Header, Shop, FAQ, Referências e Footer -->
+    <div class="app">
 
-    var player;
-    var somAtivado = false;
+        <!-- Navbar -->
+        <div class="section__navbar">
+            <div class="navbar">
+                <div class="navbar__header">
+                    <a href="" class="navbar__brand">Magrin Cheats</a>
+                    <div class="navbar__menu" onclick="navbar()">
+                        <!-- ícone menu -->
+                    </div>
+                </div>
+                <div class="navbar__nav" id="navbarNav">
+                    <ul>
+                        <a class='navbar__href' href='/'><li class="navbar__link active">INICIO</li></a>
+                        <a class='navbar__href' href='/#shop'><li class="navbar__link">PRODUTOS</li></a>
+                        <a class='navbar__href' href='/#REFERÊNCIAS'><li class="navbar__link">REFERÊNCIAS</li></a>
+                        <a class='navbar__href' href='/#faq'><li class="navbar__link">FAQ</li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '0',
-            width: '0',
-            videoId: 'C5CYINWf0Ik',
-            playerVars: {
-                'autoplay': 1,
-                'mute': 1,
-                'loop': 1,
-                'playlist': 'C5CYINWf0Ik'
-            },
-            events: { 'onReady': tryAutoplay }
-        });
-    }
+        <!-- Header -->
+        <div class="section__header animation">
+            <div class="header__circle">
+                <img class="micheal" src="./assets/img/char-both.png" alt="">
+            </div>
+            <div class="header__content">
+                <h1 class="header__title">Magrin <span>Cheats o #00🏆</span></h1>
+                <p class="header__description">
+                    Na Magrin Cheats, colocamos nossos clientes em primeiro lugar, oferecendo produtos de alta qualidade e suporte confiável para garantir a melhor experiência possível.
+                </p>
+                <a href="#shop" class="header__arrow">Veja nossos produtos!</a>
+            </div>
+        </div>
 
-    function tryAutoplay(event) {
-        event.target.playVideo();
-        event.target.seekTo(46, true);
-    }
+        <!-- Shop -->
+        <div id="shop" class="section__shop animation">
+            <h1 class="shop__title">Shop</h1>
+            <p class="shop__description">- Sua Loja Nº1 para FiveM e Outros Games..</p>
 
-    function ativarSom() {
-        if (player && player.unMute && !somAtivado) {
-            player.unMute();
-            player.playVideo();
-            player.seekTo(46, true);
-            somAtivado = true;
-            disableButton();
+            <div class="shop__cards" id="category-1">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="shop__card">
+                            <img class="shop__icon" src="./assets/img/pvp.png" alt="Shop Logo" onclick="openLightbox(this)">
+                            <h2 class="shop__card__title">MAGRIN EXTERNAL [FIVEM]</h2>
+                            <p class="shop__card__description">External Cheat mais potente e confiável para FiveM.</p>
+                            <p class="shop__card__price">Por apenas: <span>R$150,00</span></p>
+                            <button type="button" class="shop__card__purchase" onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20MAGRIN%20EXTERNAL%20[FIVEM]', '_blank')">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span class="close" onclick="closeLightbox()">&times;</span>
+            <img class="lightbox-content" id="lightbox-img">
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Lightbox
+        function openLightbox(img) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightbox-img').src = img.src;
         }
-    }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
 
-    document.getElementById("playMusicBtn").addEventListener("click", ativarSom);
-    document.body.addEventListener("click", ativarSom);
+        // YouTube API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    function disableButton() {
-        let btn = document.getElementById("playMusicBtn");
-        btn.innerText = "🎶 Música Tocando...";
-        btn.disabled = true;
-    }
+        var player;
+        var somAtivado = false;
 
-    // Lightbox
-    function openLightbox(img) {
-        let lightbox = document.createElement('div');
-        lightbox.classList.add('lightbox');
-        lightbox.innerHTML = `<span class="close" onclick="this.parentElement.style.display='none'">&times;</span>
-                              <img class="lightbox-content" src="${img.src}">`;
-        document.body.appendChild(lightbox);
-        lightbox.style.display = "block";
-    }
-
-    function openLinkInNewTab(link) {
-        window.open(link, '_blank');
-    }
-</script>
-
-<!-- Restante do HTML (navbar, header, shop, FAQ, referências, footer) -->
-</body>
-</html>
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'C5CYINWf0Ik',
+                playerVars: { 'autoplay': 1, 'mute': 1, 'loop': 1, 'playlist': 'C5CYINWf0Ik
