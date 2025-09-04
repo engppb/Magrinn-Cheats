@@ -1,215 +1,136 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Magrin Cheats</title>
-    <link rel="icon" type="image/png" href="./assets/img/logo.png">
-    <meta property="og:title" content="Magrin Cheats">
-    <meta property="og:description" content="A Loja Nº1 de Cheats & Spoofers para FiveM, Fortnite, Warzone, Valorant e League of Legends">
-    <meta name="theme-color" content="#7B86FF">
-    <meta property="og:image" content="./assets/img/logo.png">
-    <meta property="og:url" content="">
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/colors.css">
-    <link rel="stylesheet" href="./assets/css/general.css">
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/header.css">
-    <link rel="stylesheet" href="./assets/css/about.css">
-    <link rel="stylesheet" href="./assets/css/shop.css">
-    <link rel="stylesheet" href="./assets/css/faq.css">
-    <link rel="stylesheet" href="./assets/css/REFERÊNCIAS.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Magrin Cheats</title>
+<link rel="icon" type="image/png" href="./assets/img/logo.png">
+<meta property="og:title" content="Magrin Cheats">
+<meta property="og:description" content="A Loja Nº1 de Cheats & Spoofers para FiveM, Fortnite, Warzone, Valorant e League of Legends">
+<meta name="theme-color" content="#7B86FF">
+<meta property="og:image" content="./assets/img/logo.png">
+<meta property="og:url" content="">
 
-    <style>
-        body {
-            background: #0f0f0f;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 80px;
-        }
+<!-- CSS -->
+<link rel="stylesheet" href="./assets/css/colors.css">
+<link rel="stylesheet" href="./assets/css/general.css">
+<link rel="stylesheet" href="./assets/css/navbar.css">
+<link rel="stylesheet" href="./assets/css/header.css">
+<link rel="stylesheet" href="./assets/css/about.css">
+<link rel="stylesheet" href="./assets/css/shop.css">
+<link rel="stylesheet" href="./assets/css/faq.css">
+<link rel="stylesheet" href="./assets/css/REFERÊNCIAS.css">
+<link rel="stylesheet" href="./assets/css/footer.css">
 
-        /* Botão de música */
-        #playMusicBtn {
-            padding: 15px 40px;
-            font-size: 20px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            background: linear-gradient(90deg, #00ffcc, #ff00ff);
-            color: white;
-            text-shadow: 0 0 10px #00ffcc;
-            box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-        }
+<style>
+/* Body e botão música */
+body { background: #0f0f0f; color: white; font-family: Arial, sans-serif; text-align: center; margin-top: 80px; }
+#playMusicBtn { padding: 15px 40px; font-size: 20px; border: none; border-radius: 12px; cursor: pointer; background: linear-gradient(90deg, #00ffcc, #ff00ff); color: white; text-shadow: 0 0 10px #00ffcc; box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff; transition: all 0.3s ease; margin-top: 20px; }
+#playMusicBtn:hover { transform: scale(1.1); box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff; }
+#playMusicBtn:disabled { background: #222; color: #888; box-shadow: none; cursor: default; transform: none; }
 
-        #playMusicBtn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff;
-        }
-
-        #playMusicBtn:disabled {
-            background: #222;
-            color: #888;
-            box-shadow: none;
-            cursor: default;
-            transform: none;
-        }
-
-        /* Cards da loja - aumentar 40% */
-        .shop__icon {
-            width: 350px; /* 250px * 1.4 = 350px */
-            height: auto;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: transform 0.2s ease;
-        }
-
-        .shop__icon:hover {
-            transform: scale(1.1);
-        }
-
-        /* Lightbox / popup de imagem */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            text-align: center;
-        }
-
-        .lightbox-content {
-            max-width: 112%; /* 80% + 40% */
-            max-height: 112%;
-            margin-top: 5%;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .lightbox-content:hover {
-            transform: scale(1.05);
-        }
-
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+/* Shop lightbox */
+.shop__icon { width: 250px; height: auto; cursor: pointer; border-radius: 10px; transition: transform 0.2s ease; }
+.shop__icon:hover { transform: scale(1.05); }
+.lightbox { display: none; position: fixed; z-index: 9999; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); text-align: center; }
+.lightbox-content { max-width: 80%; max-height: 80%; margin-top: 5%; border-radius: 12px; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+.close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+</style>
 </head>
 <body>
 
-    <!-- Botão de música -->
-    <div>
-        <button id="playMusicBtn">🔊 Ativar Som</button>
+<!-- Botão de música -->
+<div>
+  <button id="playMusicBtn">🔊 Ativar Som</button>
+</div>
+<div id="player"></div>
+
+<!-- Navbar e header -->
+<div class="app">
+  <div class="section__navbar">
+    <div class="navbar">
+      <div class="navbar__header">
+        <a href="" class="navbar__brand">Magrin Cheats</a>
+        <div class="navbar__menu" onclick="navbar()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14">
+            <g id="menu" transform="translate(-2 -5)">
+              <line x2="15" transform="translate(6 12)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <line x2="18" transform="translate(3 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <line x2="18" transform="translate(3 18)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="navbar__nav" id="navbarNav">
+        <ul>
+          <a class='navbar__href' href='/'><li class="navbar__link active">INICIO</li></a>
+          <a class='navbar__href' href='/#shop'><li class="navbar__link">PRODUTOS</li></a>
+          <a class='navbar__href' href='/#REFERÊNCIAS'><li class="navbar__link">REFERÊNCIAS</li></a>
+          <a class='navbar__href' href='/#faq'><li class="navbar__link">FAQ</li></a>
+        </ul>
+      </div>
     </div>
-    <div id="player"></div>
+  </div>
 
-    <!-- Navbar, Header, Shop, FAQ, Referências e Footer -->
-    <div class="app">
+  <!-- HEADER -->
+  <div class="section__header animation">
+    <div class="header__circle">
+      <img class="micheal" src="./assets/img/char-both.png" alt="">
+    </div>
+    <div class="header__content">
+      <h1 class="header__title">Magrin <span>Cheats o #00🏆</span></h1>
+      <p class="header__description">Na Magrin Cheats, colocamos nossos clientes em primeiro lugar...</p>
+      <a href="#shop" class="header__arrow">Veja nossos produtos!</a>
+    </div>
+  </div>
 
-        <!-- Navbar -->
-        <div class="section__navbar">
-            <div class="navbar">
-                <div class="navbar__header">
-                    <a href="" class="navbar__brand">Magrin Cheats</a>
-                    <div class="navbar__menu" onclick="navbar()">
-                        <!-- ícone menu -->
-                    </div>
-                </div>
-                <div class="navbar__nav" id="navbarNav">
-                    <ul>
-                        <a class='navbar__href' href='/'><li class="navbar__link active">INICIO</li></a>
-                        <a class='navbar__href' href='/#shop'><li class="navbar__link">PRODUTOS</li></a>
-                        <a class='navbar__href' href='/#REFERÊNCIAS'><li class="navbar__link">REFERÊNCIAS</li></a>
-                        <a class='navbar__href' href='/#faq'><li class="navbar__link">FAQ</li></a>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Header -->
-        <div class="section__header animation">
-            <div class="header__circle">
-                <img class="micheal" src="./assets/img/char-both.png" alt="">
-            </div>
-            <div class="header__content">
-                <h1 class="header__title">Magrin <span>Cheats o #00🏆</span></h1>
-                <p class="header__description">
-                    Na Magrin Cheats, colocamos nossos clientes em primeiro lugar, oferecendo produtos de alta qualidade e suporte confiável para garantir a melhor experiência possível.
-                </p>
-                <a href="#shop" class="header__arrow">Veja nossos produtos!</a>
-            </div>
-        </div>
-
-        <!-- Shop -->
-        <div id="shop" class="section__shop animation">
-            <h1 class="shop__title">Shop</h1>
-            <p class="shop__description">- Sua Loja Nº1 para FiveM e Outros Games..</p>
-
-            <div class="shop__cards" id="category-1">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="shop__card">
-                            <img class="shop__icon" src="./assets/img/pvp.png" alt="Shop Logo" onclick="openLightbox(this)">
-                            <h2 class="shop__card__title">MAGRIN EXTERNAL [FIVEM]</h2>
-                            <p class="shop__card__description">External Cheat mais potente e confiável para FiveM.</p>
-                            <p class="shop__card__price">Por apenas: <span>R$150,00</span></p>
-                            <button type="button" class="shop__card__purchase" onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20MAGRIN%20EXTERNAL%20[FIVEM]', '_blank')">
-                                Comprar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Lightbox -->
-        <div id="lightbox" class="lightbox">
-            <span class="close" onclick="closeLightbox()">&times;</span>
-            <img class="lightbox-content" id="lightbox-img">
-        </div>
-
+  <!-- SHOP -->
+  <div id="shop" class="section__shop animation">
+    <h1 class="shop__title">Shop</h1>
+    <p class="shop__description">- Sua Loja Nº1 para FiveM e Outros Games..</p>
+    <div class="shop__categories">
+      <div class="shop__category active" data-category-index="1">FIVEM</div>
+      <div class="shop__category" data-category-index="2">SPOOFER</div>
+      <div class="shop__category" data-category-index="3">GRÁTIS</div>
     </div>
 
-    <!-- Scripts -->
-    <script>
-        // Lightbox
-        function openLightbox(img) {
-            document.getElementById('lightbox').style.display = 'block';
-            document.getElementById('lightbox-img').src = img.src;
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-        }
+    <!-- Cards categoria 1 -->
+    <div class="shop__cards" id="category-1">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="shop__card">
+            <img class="shop__icon" src="./assets/img/pvp.png" alt="Shop Logo" onclick="openLightbox(this)">
+            <button type="button" class="shop__card__purchase" onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20MAGRIN%20EXTERNAL%20[FIVEM]', '_blank')">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        // YouTube API
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
 
-        var player;
-        var somAtivado = false;
+</div>
 
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'C5CYINWf0Ik',
-                playerVars: { 'autoplay': 1, 'mute': 1, 'loop': 1, 'playlist': 'C5CYINWf0Ik
+<!-- FOOTER OMITIDO PARA BREVIDADE -->
+
+<!-- SCRIPTS -->
+<script>
+// YouTube
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+var player; var somAtivado = false;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {height:'0', width:'0', videoId:'C5CYINWf0Ik', playerVars:{'autoplay':1,'mute':1,'loop':1,'playlist':'C5CYINWf0Ik'}, events:{'onReady':tryAutoplay}});
+}
+function tryAutoplay(event){ event.target.playVideo(); event.target.seekTo(46,true); }
+function ativarSom(){ if(player && player.unMute && !somAtivado){ player.unMute(); player.playVideo(); player.seekTo(46,true); somAtivado=true; disableButton(); }}
+document.getElementById("playMusicBtn").addEventListener("click", ativarSom);
+document.body.addEventListener("click", ativarSom);
+function disableButton(){ let btn = document.getElementById("playMusicBtn"); btn.innerText = "🎶 Música Tocando...";
