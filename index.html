@@ -1,136 +1,883 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Magrin Cheats</title>
-<link rel="icon" type="image/png" href="./assets/img/logo.png">
-<meta property="og:title" content="Magrin Cheats">
-<meta property="og:description" content="A Loja Nº1 de Cheats & Spoofers para FiveM, Fortnite, Warzone, Valorant e League of Legends">
-<meta name="theme-color" content="#7B86FF">
-<meta property="og:image" content="./assets/img/logo.png">
-<meta property="og:url" content="">
-
-<!-- CSS -->
-<link rel="stylesheet" href="./assets/css/colors.css">
-<link rel="stylesheet" href="./assets/css/general.css">
-<link rel="stylesheet" href="./assets/css/navbar.css">
-<link rel="stylesheet" href="./assets/css/header.css">
-<link rel="stylesheet" href="./assets/css/about.css">
-<link rel="stylesheet" href="./assets/css/shop.css">
-<link rel="stylesheet" href="./assets/css/faq.css">
-<link rel="stylesheet" href="./assets/css/REFERÊNCIAS.css">
-<link rel="stylesheet" href="./assets/css/footer.css">
-
 <style>
-/* Body e botão música */
-body { background: #0f0f0f; color: white; font-family: Arial, sans-serif; text-align: center; margin-top: 80px; }
-#playMusicBtn { padding: 15px 40px; font-size: 20px; border: none; border-radius: 12px; cursor: pointer; background: linear-gradient(90deg, #00ffcc, #ff00ff); color: white; text-shadow: 0 0 10px #00ffcc; box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff; transition: all 0.3s ease; margin-top: 20px; }
-#playMusicBtn:hover { transform: scale(1.1); box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff; }
-#playMusicBtn:disabled { background: #222; color: #888; box-shadow: none; cursor: default; transform: none; }
+.shop__icon {
+  width: 250px; 
+  height: auto;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
 
-/* Shop lightbox */
-.shop__icon { width: 250px; height: auto; cursor: pointer; border-radius: 10px; transition: transform 0.2s ease; }
-.shop__icon:hover { transform: scale(1.05); }
-.lightbox { display: none; position: fixed; z-index: 9999; padding-top: 60px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); text-align: center; }
-.lightbox-content { max-width: 80%; max-height: 80%; margin-top: 5%; border-radius: 12px; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
-.close { position: absolute; top: 20px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+.shop__icon:hover {
+  transform: scale(1.05);
+}
+
+/* Fundo do lightbox */
+.lightbox {
+  display: none; /* escondido por padrão */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+  text-align: center;
+}
+
+/* Imagem dentro do lightbox */
+.lightbox-content {
+  max-width: 80%;
+  max-height: 80%;
+  margin-top: 5%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+/* Botão fechar */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
 </style>
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<!-- Botão de música -->
+    <title>Magrin Cheats</title>
+    <link rel="icon" type="image/png" href="./assets/img/logo.png">
+    <meta property="og:title" content="Magrin Cheats">
+    <meta property="og:description" content="A Loja Nº1 de Cheats & Spoofers para FiveM, Fortnite, Warzone, Valorant e League of Legends">
+    <meta name="theme-color" content="#7B86FF">
+    <meta property="og:image" content="./assets/img/logo.png">
+    <meta property="og:url" content="">
+
+    <!--  CSS  -->
+    <link rel="stylesheet" href="./assets/css/colors.css">
+    <link rel="stylesheet" href="./assets/css/general.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/about.css">
+    <link rel="stylesheet" href="./assets/css/shop.css">
+    <link rel="stylesheet" href="./assets/css/faq.css">
+    <link rel="stylesheet" href="./assets/css/REFERÊNCIAS.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+
+</head>
+<style>
+  body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  #playMusicBtn {
+    padding: 15px 40px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00ffcc, #ff00ff);
+    color: white;
+    text-shadow: 0 0 10px #00ffcc;
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff00ff;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+  }
+
+  #playMusicBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #00ffcc, 0 0 50px #ff00ff;
+  }
+
+  #playMusicBtn:disabled {
+    background: #222;
+    color: #888;
+    box-shadow: none;
+    cursor: default;
+    transform: none;
+  }
+</style>
+
 <div>
   <button id="playMusicBtn">🔊 Ativar Som</button>
 </div>
+
 <div id="player"></div>
 
-<!-- Navbar e header -->
-<div class="app">
-  <div class="section__navbar">
-    <div class="navbar">
-      <div class="navbar__header">
-        <a href="" class="navbar__brand">Magrin Cheats</a>
-        <div class="navbar__menu" onclick="navbar()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14">
-            <g id="menu" transform="translate(-2 -5)">
-              <line x2="15" transform="translate(6 12)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-              <line x2="18" transform="translate(3 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-              <line x2="18" transform="translate(3 18)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-            </g>
-          </svg>
+<script>
+  // Carregar API do YouTube
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  var somAtivado = false;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId: 'C5CYINWf0Ik',
+      playerVars: {
+        'autoplay': 1,
+        'mute': 1,   // começa mudo
+        'loop': 1,
+        'playlist': 'C5CYINWf0Ik'
+      },
+      events: {
+        'onReady': tryAutoplay
+      }
+    });
+  }
+
+  function tryAutoplay(event) {
+    event.target.playVideo();
+    event.target.seekTo(46, true); // começa a partir de 30s
+  }
+
+  // Função que ativa o som
+  function ativarSom() {
+    if (player && player.unMute && !somAtivado) {
+      player.unMute();
+      player.playVideo();
+      player.seekTo(46, true); // garante que ative no ponto certo
+      somAtivado = true;
+      disableButton();
+    }
+  }
+
+  // Clique no botão ativa som
+  document.getElementById("playMusicBtn").addEventListener("click", ativarSom);
+
+  // Clique em qualquer lugar da página também ativa som
+  document.body.addEventListener("click", ativarSom);
+
+  function disableButton() {
+    let btn = document.getElementById("playMusicBtn");
+    btn.innerText = "🎶 Música Tocando...";
+    btn.disabled = true;
+  }
+</script>
+
+<body>
+
+    <div class="app">
+
+        <div class="section__navbar">
+            <div class="navbar">
+                <div class="navbar__header">
+                    <a href="" class="navbar__brand">
+                    Magrin Cheats
+                </a>
+
+                    <div class="navbar__menu" onclick="navbar()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14">
+                        <g id="menu" transform="translate(-2 -5)">
+                            <line id="Line_1" data-name="Line 1" x2="15" transform="translate(6 12)" fill="none"
+                                  stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="Line_2" data-name="Line 2" x2="18" transform="translate(3 6)" fill="none"
+                                  stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <line id="Line_3" data-name="Line 3" x2="18" transform="translate(3 18)" fill="none"
+                                  stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </g>
+                    </svg>
+                    </div>
+                </div>
+
+                <div class="navbar__nav" id="navbarNav">
+
+                    <ul>
+                        <a class='navbar__href' href='/'>
+                            <li class="navbar__link active">INICIO</li>
+                        </a>
+                        <a class='navbar__href' href='/#shop'>
+                            <li class="navbar__link">PRODUTOS</li>
+                        </a>
+                        <a class='navbar__href' href='/#REFERÊNCIAS'>
+                            <li class="navbar__link">REFERÊNCIAS</li>
+                        </a>
+                        <a class='navbar__href' href='/#faq'>
+                            <li class="navbar__link">FAQ</li>
+                        </a>
+                        <!-- <a href="terms.html" class="navbar__href"> 
+    <li class="navbar__link">Terms</li>
+</a> -->
+
+                    </ul>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-      <div class="navbar__nav" id="navbarNav">
+
+        <div class="section__header animation">
+
+            <div class="header__circle">
+
+                <img class="micheal" src="./assets/img/char-both.png" alt="">
+
+
+            </div>
+
+            <div class="header__content">
+
+
+                <h1 class="header__title">
+                    Magrin
+                    <span>Cheats o #00🏆</span>
+
+                </h1>
+
+                <p class="header__description">
+                    Na Magrin Cheats, colocamos nossos clientes em primeiro lugar, oferecendo produtos de alta qualidade e suporte confiável para garantir a melhor experiência possível.
+                </p>
+
+                <div class="header__info">
+                    <div class="header__square">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 18 22">
+                        <path id="shield" d="M12,22s8-4,8-10V5L12,2,4,5v7C4,18,12,22,12,22Z"
+                              transform="translate(-3 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2"/>
+                    </svg>
+                    </div>
+                    O Spoofer & Cheats Nº1 do Mercado – Confiado por Gamers no Mundo Todo
+                </div>
+
+                <a href="#shop" class="header__arrow">
+                <svg class="header__arrow__icon" xmlns="http://www.w3.org/2000/svg" width="18.949" height="21.759" viewBox="0 0 18.949 21.759">
+                    <g id="chevrons-down" transform="translate(-5.586 -4.586)">
+                        <path id="Path_1" data-name="Path 1" d="M7,13l8.06,8.06L23.121,13" transform="translate(0 4.285)" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        <path id="Path_2" data-name="Path 2" d="M7,6l8.06,8.06L23.121,6" fill="none" stroke="#4a4a4a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                    </g>
+                </svg>
+
+               Veja nossos produtos!
+            </a>
+
+            </div>
+
+        </div>
+
+        <div id="shop" class="section__shop animation">
+
+            <h1 class="shop__title">Shop</h1>
+            <p class="shop__description">- Sua Loja Nº1 para FiveM e Outros Games..</p>
+
+            <div class="shop__categories">.
+
+                <div class="shop__category active" data-category-index="1">
+                    FIVEM
+                </div>
+                <div class="shop__category" data-category-index="2">
+                    SPOOFER
+                </div>
+                <div class="shop__category" data-category-index="3">
+                    GRÁTIS
+                </div>
+
+            </div>
+
+
+            <div class="shop__cards" id="category-1">
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="shop__card">
+<img class="shop__icon" src="./assets/img/pvp.png" alt="Shop Logo" onclick="openLightbox(this)">
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+</div>
+
+                            <!-- Purchase Button WhatsApp -->
+<button type="button" class="shop__card__purchase" 
+    onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20MAGRIN%20EXTERNAL%20[FIVEM]', '_blank')">
+    <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
+        <g id="shopping-bag" transform="translate(1 1)">
+            <path id="Path_3" data-name="Path 3" d="M5.194,2,3,4.925V15.161a1.462,1.462,0,0,0,1.462,1.462H14.7a1.462,1.462,0,0,0,1.462-1.462V4.925L13.968,2Z" transform="translate(-2.575 -2)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <line id="Line_2" data-name="Line 2" x2="13.586" transform="translate(0 2.736)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <path id="Path_4" data-name="Path 4" d="M13.849,10A2.925,2.925,0,0,1,8,10" transform="translate(-3.92 -4.151)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+    </svg>
+    Comprar
+</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="shop__card">
+                            <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68">
+                            <h2 class="shop__card__title">CONTA ROCKSTAR [ACCOUNT]</h2>
+                            <p class="shop__card__description">FULL ACCESS & FRESH ACC</p>
+                            <p class="shop__card__price">Por apenas: <span>R$20,00</span></p>
+
+                            <!-- Purchase Button -->
+                            <!-- Purchase Button WhatsApp -->
+<button type="button" class="shop__card__purchase" 
+    onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20comprar%20uma%20conta%20Rockstar', '_blank')">
+    <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
+        <g id="shopping-bag" transform="translate(1 1)">
+            <path id="Path_3" data-name="Path 3" d="M5.194,2,3,4.925V15.161a1.462,1.462,0,0,0,1.462,1.462H14.7a1.462,1.462,0,0,0,1.462-1.462V4.925L13.968,2Z" transform="translate(-2.575 -2)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <line id="Line_2" data-name="Line 2" x2="13.586" transform="translate(0 2.736)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            <path id="Path_4" data-name="Path 4" d="M13.849,10A2.925,2.925,0,0,1,8,10" transform="translate(-3.92 -4.151)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </g>
+    </svg>
+    Comprar
+</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        function openLinkInNewTab(link) {
+                            // Use window.open to open the link in a new tab
+                            window.open(link, '_blank');
+                        }
+                    </script>
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="shop__cards" id="category-2" style="display: none;">
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="shop__card">
+                            <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68">
+                            <h2 class="shop__card__title">PROJECT Magrin [SPOOFER]</h2>
+                            <p class="shop__card__description">O MELHOR SPOOFER PARA FIVEM,VALORANT,FORTNITE E LOL</p>
+                            <p class="shop__card__price">Por apenas: <span>FREE</span></p>
+                            <div data-sellix-product="6667133862647f8" type="submit" alt="Buy Now with sellix.io" class="shop__card__purchase">
+                                <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
+                            <g id="shopping-bag" transform="translate(1 1)">
+                                <path id="Path_3" data-name="Path 3" d="M5.194,2,3,4.925V15.161a1.462,1.462,0,0,0,1.462,1.462H14.7a1.462,1.462,0,0,0,1.462-1.462V4.925L13.968,2Z" transform="translate(-2.575 -2)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <line id="Line_2" data-name="Line 2" x2="13.586" transform="translate(0 2.736)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path id="Path_4" data-name="Path 4" d="M13.849,10A2.925,2.925,0,0,1,8,10" transform="translate(-3.92 -4.151)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            </g>
+                        </svg> Purchase
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="shop__cards" id="category-3" style="display: none;">
+
+                <div class="row">
+
+
+                    <div class="col-lg-4">
+                        <div class="shop__card">
+                            <img class="shop__icon" src="./assets/img/logo.png" width="58" height="68">
+                            <h2 class="shop__card__title">Magrin byPASS VALORANT & LOL [FIVEM]</h2>
+                            <p class="shop__card__description">BEST FREE UNDETECTED FIVEM CHEAT!</p>
+                            <p class="shop__card__price">Por apenas: <span>R$250,00</span></p>
+                            <div class="shop__card__purchase" onclick="openLinkInNewTab('https://linkvertise.com/1069471/Magrin-free')">
+                                <svg class="shop__card__icon" xmlns="http://www.w3.org/2000/svg" width="16.586" height="17.624" viewBox="0 0 15.586 16.624">
+                            <g id="shopping-bag" transform="translate(1 1)">
+                                <path id="Path_3" data-name="Path 3" d="M5.194,2,3,4.925V15.161a1.462,1.462,0,0,0,1.462,1.462H14.7a1.462,1.462,0,0,0,1.462-1.462V4.925L13.968,2Z" transform="translate(-2.575 -2)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <line id="Line_2" data-name="Line 2" x2="13.586" transform="translate(0 2.736)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path id="Path_4" data-name="Path 4" d="M13.849,10A2.925,2.925,0,0,1,8,10" transform="translate(-3.92 -4.151)" fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            </g>
+                        </svg> Download
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="REFERÊNCIAS" class="section__REFERÊNCIAS animation">
+
+        <h1 class="REFERÊNCIAS__title">REFERÊNCIAS</h1>
+
+        <div class="REFERÊNCIAS__cards">
+
+            <div class="row">
+
+                <div class="col-lg-4">
+
+                    <div class="REFERÊNCIAS__card">
+
+                        <h3 class="REFERÊNCIAS__card__name">Luca</h3>
+
+                        <div class="REFERÊNCIAS__stars">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg class="REFERÊNCIAS__negative" xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#949494" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                        </div>
+
+                        <p class="REFERÊNCIAS__card__review">
+                            10/10 spoofer
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="REFERÊNCIAS__card">
+
+                        <h3 class="REFERÊNCIAS__card__name">PABLOXTX🐐</h3>
+
+                        <div class="REFERÊNCIAS__stars">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#949494" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                        </div>
+
+                        <p class="REFERÊNCIAS__card__review">
+                            +rep MELHOR SPOOFER DO MERCADO, TOMO BAN TODOS OS DIAS JOGANDO XITADO NO VALORANT E TIRO O BANS EM MINUTOS <3
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="REFERÊNCIAS__card">
+
+                        <h3 class="REFERÊNCIAS__card__name">JÚLIA </h3>
+
+                        <div class="REFERÊNCIAS__stars">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#949494" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                        </div>
+
+                        <p class="REFERÊNCIAS__card__review">
+                            +rep ÚNICO TPM DE LOJINHA DE DISCORD QUE REALMENTE FUNCIONA!! 
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+
+                    <div class="REFERÊNCIAS__card">
+
+                        <h3 class="REFERÊNCIAS__card__name">Michnea </h3>
+
+                        <div class="REFERÊNCIAS__stars">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#0070ff" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="21.02" viewBox="0 0 22 21.02">
+                                <path id="star"
+                                      d="M12,2l3.09,6.26L22,9.27l-5,4.87,1.18,6.88L12,17.77,5.82,21.02,7,14.14,2,9.27,8.91,8.26Z"
+                                      transform="translate(-1 -1)" fill="none" stroke="#949494" stroke-linecap="round"
+                                      stroke-linejoin="round" stroke-width="2"/>
+                            </svg>
+
+                        </div>
+
+                        <p class="REFERÊNCIAS__card__review">
+                            +rep BEST OF THE BEST SPOFF,Now i hacking on fplayt very good
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="faq" class="section__faq animation">
+
+        <h1 class="faq__title">FAQ</h1>
+        <p class="faq__description"> </p>
+
+        <div class="faq__cards">
+
+            <div class="row">
+
+                <div class="col-lg-2">
+
+                    <div class="faq__card">
+
+                        <div class="faq__card__text">
+                            <h2 class="faq__card__text__title">Paga com GiftCards?</h2>
+                            <p class="faq__card__description"></p>
+                        </div>
+
+                        <div class="faq__card__plus">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20">
+                                <g id="plus" transform="translate(1 0.818)">
+                                    <line id="Line_3" data-name="Line 3" y2="18" transform="translate(10 0.182)"
+                                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"/>
+                                    <line id="Line_4" data-name="Line 4" x2="19" transform="translate(0 9.182)"
+                                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="faq__card__content" style="display: none;">
+                        Para pagar com Gift Cards, abra um ticket no seu servidor Discord. </div>
+
+                </div>
+
+                <div class="col-lg-2">
+
+                    <div class="faq__card">
+
+                        <div class="faq__card__text">
+                            <h2 class="faq__card__text__title">Pagar com PayPal?</h2>
+                        </div>
+
+                        <div class="faq__card__plus">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20">
+                                <g id="plus" transform="translate(1 0.818)">
+                                    <line id="Line_3" data-name="Line 3" y2="18" transform="translate(10 0.182)"
+                                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"/>
+                                    <line id="Line_4" data-name="Line 4" x2="19" transform="translate(0 9.182)"
+                                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="faq__card__content" style="display: none;">
+                        Você pode pagar no site e em nosso servidor Discord com PayPal. </div>
+
+                </div>
+
+<div class="col-lg-2">
+
+    <div class="faq__card">
+
+        <div class="faq__card__text">
+            <h2 class="faq__card__text__title">Como funciona a atualização dos cheats?</h2>
+        </div>
+
+        <div class="faq__card__plus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20">
+                <g id="plus" transform="translate(1 0.818)">
+                    <line id="Line_3" data-name="Line 3" y2="18" transform="translate(10 0.182)"
+                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="2"/>
+                    <line id="Line_4" data-name="Line 4" x2="19" transform="translate(0 9.182)"
+                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="2"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <div class="faq__card__content" style="display: none;">
+        O cheat verifica automaticamente se há uma nova versão disponível e realiza a atualização sem precisar de intervenção manual, garantindo que todos os recursos funcionem corretamente. Durante o processo, é importante não fechar o programa, pois isso pode causar falhas. Após a atualização, tudo é reinicializado para manter o funcionamento perfeito e garantir compatibilidade com a versão mais recente do jogo.
+
+        <br><br>
+        <strong>Atualização:</strong>
         <ul>
-          <a class='navbar__href' href='/'><li class="navbar__link active">INICIO</li></a>
-          <a class='navbar__href' href='/#shop'><li class="navbar__link">PRODUTOS</li></a>
-          <a class='navbar__href' href='/#REFERÊNCIAS'><li class="navbar__link">REFERÊNCIAS</li></a>
-          <a class='navbar__href' href='/#faq'><li class="navbar__link">FAQ</li></a>
+            <li>🔄 Atualizando automaticamente para a versão mais recente</li>
+            <li>✅ Tudo funcionando corretamente após atualização</li>
+            <li>⚠️ Não feche durante a atualização</li>
+            <li>🎮 Compatível com a versão atual do jogo</li>
         </ul>
-      </div>
     </div>
-  </div>
-
-  <!-- HEADER -->
-  <div class="section__header animation">
-    <div class="header__circle">
-      <img class="micheal" src="./assets/img/char-both.png" alt="">
-    </div>
-    <div class="header__content">
-      <h1 class="header__title">Magrin <span>Cheats o #00🏆</span></h1>
-      <p class="header__description">Na Magrin Cheats, colocamos nossos clientes em primeiro lugar...</p>
-      <a href="#shop" class="header__arrow">Veja nossos produtos!</a>
-    </div>
-  </div>
-
-  <!-- SHOP -->
-  <div id="shop" class="section__shop animation">
-    <h1 class="shop__title">Shop</h1>
-    <p class="shop__description">- Sua Loja Nº1 para FiveM e Outros Games..</p>
-    <div class="shop__categories">
-      <div class="shop__category active" data-category-index="1">FIVEM</div>
-      <div class="shop__category" data-category-index="2">SPOOFER</div>
-      <div class="shop__category" data-category-index="3">GRÁTIS</div>
-    </div>
-
-    <!-- Cards categoria 1 -->
-    <div class="shop__cards" id="category-1">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="shop__card">
-            <img class="shop__icon" src="./assets/img/pvp.png" alt="Shop Logo" onclick="openLightbox(this)">
-            <button type="button" class="shop__card__purchase" onclick="window.open('https://wa.me/5581981448976?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20MAGRIN%20EXTERNAL%20[FIVEM]', '_blank')">Comprar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox">
-    <span class="close" onclick="closeLightbox()">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
-  </div>
 
 </div>
 
-<!-- FOOTER OMITIDO PARA BREVIDADE -->
 
-<!-- SCRIPTS -->
-<script>
-// YouTube
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-document.head.appendChild(tag);
+                <div class="col-lg-2">
 
-var player; var somAtivado = false;
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {height:'0', width:'0', videoId:'C5CYINWf0Ik', playerVars:{'autoplay':1,'mute':1,'loop':1,'playlist':'C5CYINWf0Ik'}, events:{'onReady':tryAutoplay}});
+                    <div class="faq__card">
+
+                        <div class="faq__card__text">
+                            <h2 class="faq__card__text__title">Stream Proof</h2>
+                        </div>
+
+                        <div class="faq__card__plus">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20">
+                                <g id="plus" transform="translate(1 0.818)">
+                                    <line id="Line_3" data-name="Line 3" y2="18" transform="translate(10 0.182)"
+                                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"/>
+                                    <line id="Line_4" data-name="Line 4" x2="19" transform="translate(0 9.182)"
+                                          fill="none" stroke="#0070ff" stroke-linecap="round" stroke-linejoin="round"
+                                          stroke-width="2"/>
+                                </g>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="faq__card__content" style="display: none;">
+                        Este software possui Stream Proof? Sim </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section__footer">
+
+        <div class="row ">
+
+            <div class="col-lg-2">
+
+                <a href="./" class="footer__brand">
+                   Magrin.netlify.app
+                </a>
+
+                <div class="footer__description">
+                    You can find us here
+                </div>
+
+                <div class="footer__social">
+
+                    <a href="./discord" target="_blank" rel="noopener noreferrer">
+                        <div class="footer__social__square">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24.674" height="18.799" viewBox="0 0 24.674 18.799">
+            <path id="discord-brands" d="M46.92,33.587a.063.063,0,0,0-.032-.029A20.355,20.355,0,0,0,41.865,32a.076.076,0,0,0-.081.038,14.161,14.161,0,0,0-.625,1.284,18.793,18.793,0,0,0-5.641,0,12.99,12.99,0,0,0-.635-1.284A.079.079,0,0,0,34.8,32a20.3,20.3,0,0,0-5.022,1.557.072.072,0,0,0-.033.028A20.809,20.809,0,0,0,26.1,47.624a.085.085,0,0,0,.032.058A20.464,20.464,0,0,0,32.3,50.8a.08.08,0,0,0,.087-.028,14.611,14.611,0,0,0,1.26-2.05.078.078,0,0,0-.043-.109,13.477,13.477,0,0,1-1.925-.917.079.079,0,0,1-.008-.131c.129-.1.259-.2.382-.3a.076.076,0,0,1,.08-.011,14.6,14.6,0,0,0,12.4,0,.076.076,0,0,1,.081.01c.124.1.253.2.383.3a.079.079,0,0,1-.007.131,12.648,12.648,0,0,1-1.926.916.079.079,0,0,0-.042.11,16.41,16.41,0,0,0,1.259,2.048.078.078,0,0,0,.087.029,20.4,20.4,0,0,0,6.171-3.113.079.079,0,0,0,.032-.057A20.672,20.672,0,0,0,46.92,33.587ZM34.245,44.822a2.5,2.5,0,0,1,0-4.972,2.5,2.5,0,0,1,0,4.972Zm8.2,0a2.5,2.5,0,0,1,0-4.972,2.5,2.5,0,0,1,0,4.972Z" transform="translate(-26 -31.999)" fill="#f6f6f6"/>
+        </svg>
+                        </div>
+                    </a>
+                    
+                </div>
+                </ul>
+                <div class="footer__copyright">
+                    </ul>
+                    Made with ❤ by <strong>Magrin</strong> ❤ <strong>XD</strong>.
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <div class="row">
+
+                    <div class="col-lg-2">
+
+                        <h4 class="link__header">YouTube Video's</h4>
+
+                        <ul class="footer__links">
+                        </ul>
+                        <a href="https://youtu.be/zgBISByCqZc" target="_blank" class="footer__link">
+                            <li> Project Exodus | FiveM
+                            </li>
+                        </a>
+                        <a href="https://youtu.be/DdSW0ARsxg8" target="_blank" class="footer__link">
+                            <li> Project Exodus | CS2
+                            </li>
+                        </a>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    <!--  JS  -->
+    <script src="https://cdn.sellix.io/static/js/embed.js"></script>
+    <script src="https://sellauth.com/assets/js/sellauth-embed.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="./assets/js/navbar.js"></script>
+    <script src="./assets/js/shop.js"></script>
+    <script src="./assets/js/faq.js"></script>
+    <script src="./assets/js/animation.js"></script>
+    <script src="snow.js"></script>
+    <script>
+function openLightbox(img) {
+  var lightbox = document.getElementById("lightbox");
+  var lightboxImg = document.getElementById("lightbox-img");
+  lightbox.style.display = "block";
+  lightboxImg.src = img.src;
 }
-function tryAutoplay(event){ event.target.playVideo(); event.target.seekTo(46,true); }
-function ativarSom(){ if(player && player.unMute && !somAtivado){ player.unMute(); player.playVideo(); player.seekTo(46,true); somAtivado=true; disableButton(); }}
-document.getElementById("playMusicBtn").addEventListener("click", ativarSom);
-document.body.addEventListener("click", ativarSom);
-function disableButton(){ let btn = document.getElementById("playMusicBtn"); btn.innerText = "🎶 Música Tocando...";
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+
+</body>
+
+
+</html>
+
+
+
+
